@@ -11,6 +11,7 @@ void takeCoeficientes();
 void showEquation();
 float A=0,B=0,Xr=0,fa=0,fb=0,faXfxr=0,aMinusb=0;
 float cx0=0,cx1=0,cx2=0,cx3=0, cx4=0, cx5=0;
+void printClosed();
 std::string Convert (float number);
 
 int main() {
@@ -59,10 +60,12 @@ do {
 			case 3:
 				cout<<"Metodo cerrado"<<endl;
 				tomarAyB();
+				printClosed();
 				
-				cout<<"f(a)="<<fde(A)<<endl;
-				cout<<"f(b)="<<fde(B)<<endl;
-				cout<<"f(Xr)="<<fde((A+B)/2)<<endl;
+				cout << endl;
+			//	cout<<"f(a)="<<fde(A)<<endl;
+			//	cout<<"f(b)="<<fde(B)<<endl;
+			//	cout<<"f(Xr)="<<fde((A+B)/2)<<endl;
 				
 				
 				system("pause");
@@ -131,6 +134,11 @@ float fde(float num){
 	result = cx5*pow (num,5)+cx4*pow (num,4)+cx3*pow (num,3)+cx2*pow (num,2)+cx1*pow (num,1)+cx0*pow (num,0);
 	
 	return result;
+	
+}
+
+void printClosed(){
+	 std::cout <<"| Iter "<<"| A "<< "| B  "<< "| Xr "<< "| f(a) " << "| f(b) "<< "| f(Xr) "<<"|f(a)*f(Xr)| "<<" |a-b|" << "ERAP";
 	
 }
 
