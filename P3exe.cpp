@@ -59,7 +59,11 @@ do {
 			case 3:
 				cout<<"Metodo cerrado"<<endl;
 				tomarAyB();
-				cout<<"F(a)="<<fde(A);
+				
+				cout<<"f(a)="<<fde(A)<<endl;
+				cout<<"f(b)="<<fde(B)<<endl;
+				cout<<"f(Xr)="<<fde((A+B)/2)<<endl;
+				
 				
 				system("pause");
 				system("cls");	
