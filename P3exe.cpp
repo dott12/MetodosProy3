@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include <sstream>
 #include <math.h>  
+#include <iomanip>      
 using namespace std;
 
 void tomarAyB();
@@ -12,6 +13,7 @@ void showEquation();
 float A=0,B=0,Xr=0,fa=0,fb=0,faXfxr=0,aMinusb=0;
 float cx0=0,cx1=0,cx2=0,cx3=0, cx4=0, cx5=0;
 void printClosed();
+float absolute (float number);
 std::string Convert (float number);
 
 int main() {
@@ -138,7 +140,37 @@ float fde(float num){
 }
 
 void printClosed(){
-	 std::cout <<"| Iter "<<"| A "<< "| B  "<< "| Xr "<< "| f(a) " << "| f(b) "<< "| f(Xr) "<<"|f(a)*f(Xr)| "<<" |a-b|" << "ERAP";
+	 std::cout <<"| Ite "<<"|  A "<< "| B  "<< "| Xr   "<< "| f(a) " << "| f(b) "<< "| f(Xr) "<<"|f(a)*f(Xr)| "<<" |a-b| " << "|ERAP";
+	 cout <<endl;
+	 
+	 for (int i=0;i<=3;i++){
+	 	
+	 	Xr=(A+B)/2;
+	 	
+	 	
+	 	std::cout <<"| " << i;
+		 cout <<"   |  "<< A;
+		 cout <<" |  "<< B;
+		 cout <<" |  "<< Xr;
+		 cout <<" |   "<<fde(A); 
+		 cout <<"  |   "<< fde(B);
+		  cout << "  |  "<< fde(Xr);
+		  cout <<"    |    "<< fde(A)*fde(Xr);
+		  cout <<"     |   "<< absolute(A-B);
+		  cout << "   | ERAP";
+	 	
+	 	cout <<endl;
+	 	
+	 }
+	
+}
+
+float absolute (float number){
+	
+	if (number <0){
+		number=number *-1;
+	}
+	return number;
 	
 }
 
