@@ -15,6 +15,10 @@ float cx0=0,cx1=0,cx2=0,cx3=0, cx4=0, cx5=0;
 void printClosed();
 float absolute (float number);
 std::string Convert (float number);
+float closed [99][10];
+void doClosed();
+void testvalues();
+double erap;
 
 int main() {
 		int menu,menu2,menu3,menu4;
@@ -62,12 +66,14 @@ do {
 			case 3:
 				cout<<"Metodo cerrado"<<endl;
 				tomarAyB();
+				
+				testvalues();
+				
+				doClosed();
 				printClosed();
 				
 				cout << endl;
-			//	cout<<"f(a)="<<fde(A)<<endl;
-			//	cout<<"f(b)="<<fde(B)<<endl;
-			//	cout<<"f(Xr)="<<fde((A+B)/2)<<endl;
+			
 				
 				
 				system("pause");
@@ -139,29 +145,128 @@ float fde(float num){
 	
 }
 
+void doClosed(){
+	
+	
+	
+	int j=1;
+	
+		Xr=(A+B)/2;
+		
+	
+	 closed [0][0]=0;
+	 closed [0][1]=A;
+	 closed [0][2]=B;
+	 closed [0][3]=Xr;
+	 closed [0][4]=fde(A);
+	 closed [0][5]=fde(B);
+	 closed [0][6]=fde(Xr);
+	 closed [0][7]=fde(A)*fde(Xr);
+	 closed [0][8]=absolute(A-B);
+	 closed [0][9]=5.00;
+	 
+	 do {
+	 	
+	 	if(closed[j-1][7]>0){
+	 		A=closed[j-1][3];
+		 }else {
+		 	A=closed[j-1][1];
+		 }
+		 
+		 if(closed[j-1][7]<0){
+	 		B=closed[j-1][3];
+		 }else {
+		 	B=closed[j-1][2];
+		 }
+		 
+		 
+	 	Xr=(A+B)/2;
+	 
+	  closed [j][0]=j;
+	 closed [j][1]=A;
+	 closed [j][2]=B;
+	 closed [j][3]=Xr;
+	 closed [j][4]=fde(A);
+	 closed [j][5]=fde(B);
+	 closed [j][6]=fde(Xr);
+	 closed [j][7]=fde(A)*fde(Xr);
+	 closed [j][8]=absolute(A-B);
+	 closed [j][9]=absolute((closed [j][3]-closed [j-1][3])/closed[j][3]);
+	 
+	 
+	 
+	 
+	 
+	 
+	 /*if (j==7){
+		
+		closed [j][9]=0.00;
+	}*/
+	erap=closed [j][9];
+	j++;
+	
+	
+	 } while (erap>=0.0001);
+	
+	
+	
+	
+}
+
 void printClosed(){
 	 std::cout <<"| Ite "<<"|  A "<< "| B  "<< "| Xr   "<< "| f(a) " << "| f(b) "<< "| f(Xr) "<<"|f(a)*f(Xr)| "<<" |a-b| " << "|ERAP";
 	 cout <<endl;
+	 bool salir=false;
+	 int c=0;
 	 
-	 for (int i=0;i<=3;i++){
+	 /*
+	 do{
 	 	
-	 	Xr=(A+B)/2;
-	 	
-	 	
-	 	std::cout <<"| " << i;
-		 cout <<"   |  "<< A;
-		 cout <<" |  "<< B;
-		 cout <<" |  "<< Xr;
-		 cout <<" |   "<<fde(A); 
-		 cout <<"  |   "<< fde(B);
-		  cout << "  |  "<< fde(Xr);
-		  cout <<"    |    "<< fde(A)*fde(Xr);
-		  cout <<"     |   "<< absolute(A-B);
-		  cout << "   | ERAP";
-	 	
+	 	std::cout <<"| " << closed [c][0];
+		 cout <<"   |  "<< closed [c][1];
+		 cout <<" |  "<< closed [c][2];
+		 cout <<" |  "<< closed [c][3];
+		 cout <<"  |   "<<closed [c][4]; 
+		 cout <<"  |   "<< closed [c][5];
+		  cout << "  |  "<< closed [c][6];
+		  cout <<"    |    "<< closed [c][7];
+		  cout <<"     |   "<< closed [c][8];
+		  cout << "   | "<<closed [c][9];
 	 	cout <<endl;
 	 	
+	 	c = c+1;
+	 	
+	 	if (closed[c-1][9]==0){
+	 		salir=true;
+		 }
+	 	
+	 } while (salir==false);
+	 */
+	 
+	 
+	 while (salir == false) {
+	 	
+	 	std::cout <<"| " << closed [c][0];
+		 cout <<"   |  "<< closed [c][1];
+		 cout <<" |  "<< closed [c][2];
+		 cout <<" |  "<< closed [c][3];
+		 cout <<"  |   "<<closed [c][4]; 
+		 cout <<"  |   "<< closed [c][5];
+		  cout << "  |  "<< closed [c][6];
+		  cout <<"    |    "<< closed [c][7];
+		  cout <<"     |   "<< closed [c][8];
+		  cout << "   | "<<closed [c][9];
+	 	cout <<endl;
+	 	
+	 	c = c+1;
+	 	
+	 	if (closed[c-1][9]==0){
+	 		salir=true;
+		 }
+	 	
+	 	
 	 }
+	  
 	
 }
 
@@ -171,6 +276,18 @@ float absolute (float number){
 		number=number *-1;
 	}
 	return number;
+	
+}
+
+void testvalues(){
+	
+	cx5=0;
+	cx4=0;
+	cx3=1;
+	cx2=1;
+	cx1=-3;
+	cx0=-3;
+	
 	
 }
 
