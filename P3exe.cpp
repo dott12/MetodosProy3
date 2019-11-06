@@ -57,7 +57,7 @@ do {
 				cout<<"Insercion de coeficientes"<<endl;
 			//	tomarAyB();
 				takeCoeficientes();
-				
+				//testvalues();
 				showEquation();
 				system("pause");
 				system("cls");	
@@ -67,7 +67,7 @@ do {
 				cout<<"Metodo cerrado"<<endl;
 				tomarAyB();
 				
-				testvalues();
+				//testvalues();
 				
 				doClosed();
 				printClosed();
@@ -163,7 +163,7 @@ void doClosed(){
 	 closed [0][6]=fde(Xr);
 	 closed [0][7]=fde(A)*fde(Xr);
 	 closed [0][8]=absolute(A-B);
-	 closed [0][9]=5.00;
+	 closed [0][9]=100.00;
 	 
 	 do {
 	 	
@@ -281,13 +281,21 @@ float absolute (float number){
 
 void testvalues(){
 	
+/*
 	cx5=0;
 	cx4=0;
 	cx3=1;
 	cx2=1;
 	cx1=-3;
 	cx0=-3;
+	*/
 	
+	cx5=0;
+	cx4=0;
+	cx3=0;
+	cx2=1;
+	cx1=0;
+	cx0=-0.5;
 	
 }
 
