@@ -32,7 +32,7 @@ do {
 	cout<<"3.Metodo cerrado"<<endl;
 	cout<<"4.Metodo abierto"<<endl;
 	cout<<"5.Salir del programa"<<endl<<endl;
-	cout<<"Eliga la opcion que desea:"<<endl;
+	cout<<"Elija la opcion que desea:"<<endl;
 	cin>>menu;
 	system("cls");
 		switch(menu){
@@ -214,7 +214,8 @@ void doClosed(){
 }
 
 void printClosed(){
-	 std::cout <<"| Ite "<<"|  A "<< "| B  "<< "| Xr   "<< "| f(a) " << "| f(b) "<< "| f(Xr) "<<"|f(a)*f(Xr)| "<<" |a-b| " << "|ERAP";
+	 std::cout <<"|  Ite "<<"   |   A "<< "    |    B  "<< "  |    Xr   "<< " |    f(a) " << "  |    f(b) "<< "  |    f(Xr)  ";
+	 std::cout <<" |  f(a)*f(Xr)   | "<<"  |a-b|  " << "  |  ERAP   |";
 	 cout <<endl;
 	 bool salir=false;
 	 int c=0;
@@ -246,8 +247,12 @@ void printClosed(){
 	 
 	 while (salir == false) {
 	 	
-	 	std::cout <<"| " << closed [c][0];
-		 cout <<"   |  "<< closed [c][1];
+	 	cout<<"| ";
+	 	
+	 	 std::cout<< fixed << std::setprecision(4)<<closed [c][0];
+	 	//std::cout <<"| " << closed [c][0];
+	 	
+		cout<<"  |  "<< closed [c][1];
 		 cout <<" |  "<< closed [c][2];
 		 cout <<" |  "<< closed [c][3];
 		 cout <<"  |   "<<closed [c][4]; 
@@ -255,7 +260,9 @@ void printClosed(){
 		  cout << "  |  "<< closed [c][6];
 		  cout <<"    |    "<< closed [c][7];
 		  cout <<"     |   "<< closed [c][8];
-		  cout << "   | "<<closed [c][9];
+		  std::cout << "   | ";
+		  std::cout<< fixed << std::setprecision(4)<<closed [c][9];
+		  cout<<" | ";
 	 	cout <<endl;
 	 	
 	 	c = c+1;
