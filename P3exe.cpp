@@ -82,6 +82,45 @@ do {
 		
 			case 4:
 				cout<<"Metodo abierto"<<endl;
+				showEquation();
+				int iterac=0;
+				double numA,xrN=0,fxrN=0,f2xrN=0,errorN=0,epsilonN=0.0001;
+				double xrNAnterior=0,fxrNAnterior=0,f2xrNAnterior=0;
+    			cout.precision(4);       
+    			cout.setf(ios::fixed);    
+    			cout<<"Ingrese el valor inicial a evaluar\n";    
+    			cin>>numA;
+    			cout<<"|Iteraciones|"<<"\t|Xr|"<<"\t\t|F(Xr)|"<<"\t\t|F^2(Xr)|"<<"\t|Erap|"<<endl;
+    			xrN=numA;
+    			fxrN=cx5*pow (numA,5)+cx4*pow (numA,4)+cx3*pow (numA,3)+cx2*pow (numA,2)+cx1*pow (numA,1)+cx0*pow (numA,0);
+    					cx5=5*cx5;
+    					cx4=4*cx4;
+    					cx3=3*cx3;
+    					cx2=2*cx2;
+    					cx1=1*cx1;
+    			f2xrN=cx5*pow (numA,4)+cx4*pow (numA,3)+cx3*pow (numA,2)+cx2*pow (numA,1)+cx1;
+    			cout<<"\t"<<iterac<<"\t"<<xrN<<"\t\t"<<fxrN<<"\t\t"<<f2xrN<<"\t"<<"\t----"<<"%"<<endl;  
+				iterac=1;
+				do            
+    				{
+    					cout.precision(4);       
+    					cout.setf(ios::fixed);  
+    					xrNAnterior=xrN;
+    					fxrNAnterior=fxrN;
+    					f2xrNAnterior=f2xrN;
+    					xrN=xrNAnterior-(fxrNAnterior/f2xrNAnterior);
+    					fxrN=cx5*pow (xrN,5)+cx4*pow (xrN,4)+cx3*pow (xrN,3)+cx2*pow (xrN,2)+cx1*pow (xrN,1)+cx0*pow (xrN,0);
+    					errorN=abs((xrN-xrNAnterior)/xrN);
+    					cx5=5*cx5;
+    					cx4=4*cx4;
+    					cx3=3*cx3;
+    					cx2=2*cx2;
+    					cx1=1*cx1;
+    					f2xrN=cx5*pow (xrN,4)+cx4*pow (xrN,3)+cx3*pow (xrN,2)+cx2*pow (xrN,1)+cx1;	
+						cout<<"\t"<<iterac<<"\t"<<xrN<<"\t\t"<<fxrN<<"\t\t"<<f2xrN<<"\t\t"<<errorN<<"%"<<endl;   
+						iterac++;       
+    				}while (errorN>=epsilonN);   
+    			cout<<"\nLa raiz de la funcion es: "<<xrN<<endl;
 				system("pause");
 				system("cls");	
 			break;
